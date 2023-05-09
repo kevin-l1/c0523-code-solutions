@@ -20,10 +20,6 @@ const getAreaResult = getArea(17, 42);
 console.log('getArea Result:', getAreaResult);
 
 function getFirstName(person) {
-  person = {
-    firstName: 'Lelouch',
-    lastName: 'Lamperouge',
-  };
   return person.firstName;
 }
 const getFirstNameResult = getFirstName({
