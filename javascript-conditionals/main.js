@@ -27,7 +27,7 @@ function isEven(number) {
 
 
 function startsWithJ(string) {
-  if (string.charAt(0) === 'j' || string.charAt(0) === 'J') {
+  if (string.charAt(0) === 'j') {
     return true;
   } else {
     return false;
@@ -76,12 +76,15 @@ function categorizeAcidity(pH) {
 
 
 function introduceWarnerBro(name) {
-  if (name === 'yakko' || name === 'wakko') {
-    return "We're the warner brothers!";
-  } else if (name === 'dot') {
-    return "I'm cute~";
-  } else {
-    return "Goodnight everybody!";
+  switch(name) {
+    case 'yakko':
+      return "We're the warner brothers!";
+    case 'wakko':
+      return "We're the warner brothers!";
+    case 'dot':
+      return "I'm cute~";
+    default:
+      return "Goodnight everybody!";
   }
 }
 
@@ -90,22 +93,16 @@ function recommendMovie(genre) {
   switch (genre) {
     case 'action':
       return 'Die Hard';
-      break;
     case 'comedy':
       return 'Hahahaha';
-      break;
     case 'horror':
       return 'Ohhh, scary';
-      break;
     case 'drama':
       return 'How touching!';
-      break;
     case 'musical':
       return 'How beautiful!';
-      break;
     case 'sci-fi':
       return 'Aktshually';
-      break;
     default:
       return 'Genre not recognized. Choose between action, comedy, horror, drama, musical, or sci-fi';
   }
