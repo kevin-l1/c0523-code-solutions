@@ -1,7 +1,7 @@
-let x = 5;
-let y = 8;
-let z = 12;
-let maximumValue = Math.max(x, y, z);
+const x = 5;
+const y = 8;
+const z = 12;
+const maximumValue = Math.max(x, y, z);
 console.log(maximumValue);
 
 const heroes = [
@@ -14,14 +14,14 @@ const heroes = [
 let randomNumber = Math.random();
 randomNumber = randomNumber * heroes.length;
 
-let randomIndex = Math.floor(randomNumber);
+const randomIndex = Math.floor(randomNumber);
 console.log(randomIndex);
 
-let randomHero = heroes[randomIndex];
+const randomHero = heroes[randomIndex];
 console.log(randomHero)
 
 
-let library = [
+const library = [
   {
     title: 'Book1',
     author: 'Ted',
@@ -36,17 +36,17 @@ let library = [
   },
 ];
 
-let lastBook = library.pop();
+const lastBook = library.pop();
 console.log(lastBook);
 
-let firstBook = library.shift();
+const firstBook = library.shift();
 console.log(firstBook);
 
-var js = {
+const js = {
   title: 'JavaScript for Impatient Programmers',
   author: 'Dr. Axel Rauschmayer'
 };
-var css = {
+const css = {
   title: 'CSS Secrets',
   author: 'Lea Verou'
 };
@@ -58,11 +58,11 @@ library.splice(1,1);
 console.log(library);
 
 
-let fullName = 'Kevin' + ' ' + 'Li';
-let firstAndLastName = fullName.split(' ')
+const fullName = 'Kevin' + ' ' + 'Li';
+const firstAndLastName = fullName.split(' ')
 console.log(firstAndLastName);
 
-let firstName = firstAndLastName[0];
+const firstName = firstAndLastName[0];
 
-let sayMyName = firstName.toUpperCase();
+const sayMyName = firstName.toUpperCase();
 console.log(sayMyName);
