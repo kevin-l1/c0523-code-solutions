@@ -53,15 +53,14 @@ console.log('logEachCharacter("Hungry") Result:', logEachCharacter('Hungry'));
 function doubleAll(numbers) {
   const doubled = [];
   for(let i = 0; i < numbers.length; i++) {
-    numbers[i] = numbers[i] * 2;
-    doubled.push(numbers[i]);
+    doubled.push(numbers[i] * 2);
   }
   return doubled;
 }
 console.log('doubleAll Result:', doubleAll([1,3,5]))
 
 
-let games = {
+const games = {
   'LOL': "League of Legends",
   "VAL": "Valorant",
   "TFT": "Team Fight Tactics",
@@ -69,7 +68,7 @@ let games = {
 
 function getKeys(object) {
   const keys = [];
-  for(let key in object) {
+  for(const key in object) {
     keys.push(key)
   }
   return keys;
@@ -79,7 +78,7 @@ console.log('getKeys(games) Result:', getKeys(games));
 
 function getValues(object) {
   const values = [];
-  for (let key in object) {
+  for (const key in object) {
     values.push(object[key]);
   }
   return values
