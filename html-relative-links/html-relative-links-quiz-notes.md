@@ -11,7 +11,7 @@ Use a ../ and type the directory's name, then a forward slash, and type the dire
 Specify the directory's name, then a forward slash, then the name of the file.
 
 - How do you indicate the relative link to a grand parent directory?
-Use a ../ and type the directory's name, then a forward slash, and type the directories that will lead to the file.
+Use a ../../
 
 - How do you indicate the relative link to the same directory?
 Specify the filename that you want to link to, because it's in the same directory as the current file.
