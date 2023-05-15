@@ -8,7 +8,7 @@ After completing this exercise, you should be able to discuss or answer the foll
 In an ordered list, the order matters and each item is numbered by order. In an unordered list, order doesn't matter and each item is assigned a bullet point.
 
 - Is an HTML list a block element or an inline element?
-Block element
+It is a block element
 
 
 ## Notes
