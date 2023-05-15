@@ -11,10 +11,10 @@ A block-level element always starts on a new line and in horizontal writing mode
 In inline layout, a mixed stream of text, replaced elements, and other inline boxes are laid out by fragmenting them into a stack of line boxes and within each line box, inline-level boxes are aligned to each other vertically or horizontally, depending on the writing mode
 
 - What are the default width and height of a block-level element?
-The default height is is equal to the height of its conents and the default width is equal to the width of the page.
+The default height is is equal to the height of its contents and the default width is equal to the width of the page.
 
 - What are the default width and height of an inline element?
-No default height or width.
+No default width. Height is equal to height of its contents.
 
 ## Notes
 
