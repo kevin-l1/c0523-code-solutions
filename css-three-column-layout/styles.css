@@ -2,6 +2,11 @@ html {
   background-color: #1996DA;
 }
 
+#container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -20,8 +25,8 @@ div.background {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   background-color: white;
   border-radius: 50%;
 }
@@ -36,4 +41,5 @@ h1, h2, p {
 
 p {
   text-align: center;
+  width: 80%;
 }
