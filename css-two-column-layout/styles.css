@@ -28,7 +28,7 @@
 }
 
 p.description {
-  width: 50%;
+  width: 60%;
   text-align: center;
 }
 
@@ -37,10 +37,23 @@ p {
 }
 
 h4 {
-  width: 60%;
+  width: 80%;
 }
 
-h1, h4 {
-  font-family: 'Roboto', sans-serif;
+h2, h4 {
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
+}
+
+button {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: white;
+  border: #D14C45 solid 2px;
+  color: #D14C45;
+  padding: 0.5rem 2rem;
+  margin-top: 2rem;
+  text-align: center;
 }
