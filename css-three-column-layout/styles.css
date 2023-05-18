@@ -1,0 +1,39 @@
+html {
+  background-color: #1996DA;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.column-third {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: calc(100%/3);
+}
+
+div.background {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 15rem;
+  background-color: white;
+  border-radius: 50%;
+}
+
+img {
+  max-height: 50%;
+}
+
+h1, h2, p {
+  color: white;
+}
+
+p {
+  text-align: center;
+}
