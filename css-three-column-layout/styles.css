@@ -1,0 +1,45 @@
+html {
+  background-color: #1996DA;
+}
+
+#container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.column-third {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: calc(100%/3);
+}
+
+div.background {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  height: 10rem;
+  background-color: white;
+  border-radius: 50%;
+}
+
+img {
+  max-height: 50%;
+}
+
+h1, h2, p {
+  color: white;
+}
+
+p {
+  text-align: center;
+  width: 80%;
+}
