@@ -1,5 +1,5 @@
 #container {
-  width: 1800px;
+  width: 2000px;
   margin: 0 auto;
 }
 
@@ -18,19 +18,20 @@
   display: flex;
   flex-basis: 50%;
   justify-content: left;
-  padding-left: 3rem;
+  padding-left: 12rem;
 }
 
 .row-1.column-right-half {
   display: flex;
   flex-basis: 50%;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding-right: 12.4rem;
 }
 
 .row-1.p-text {
   color: #A3A3A3;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-decoration: none;
 }
 
@@ -193,13 +194,13 @@ p.hero-text {
 }
 
 .contact-us {
-  font-size: 2rem;
+  font-size: 1.5rem;
   background-color: #294464;
   color: white;
   border-radius: 0.5rem;
   border: solid;
   border-color: #294464;
-  width: 13rem;
+  width: 10rem;
   height: 3.5rem;
 }
 
