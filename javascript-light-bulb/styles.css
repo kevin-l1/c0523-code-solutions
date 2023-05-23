@@ -1,0 +1,32 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  height: 15rem;
+  width: 15rem;
+  border: solid;
+  border-radius: 50%;
+}
+
+.bulb-on {
+  background-color: #FAEA84;
+  border-color: #FEF4CD;
+  box-shadow: 0rem -1rem 1rem #FEF4CD;
+}
+
+.light {
+  background-color: #FEF9F1;
+}
+
+.bulb-off {
+  background-color: #252525;
+  border-color: #0C0C0C;
+  box-shadow: 0rem -1rem 1rem #0C0C0C;
+}
+
+.dark {
+  background-color: #111111;
+}
