@@ -1,0 +1,65 @@
+body {
+  position: relative;
+  margin: 0 auto;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.pop-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 30%;
+  padding: 0 2rem 0 2rem;
+  border-radius: 0.5rem;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.modal {
+  width: 14rem;
+  height: 3.5rem;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #4A4AE9;
+  border-radius: 0.5rem;
+  border-color: #4A4AE9;
+  box-shadow: 0rem 0.2rem 0.5rem #A5A6A6;
+  cursor: pointer;
+  margin: 1rem 0 0 1rem;
+}
+
+.no {
+  width: 6rem;
+  height: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #EB5D5D;
+  border-radius: 0.5rem;
+  border-color: #EB5D5D;
+  box-shadow: 0rem 0.2rem 0.5rem #A5A6A6;
+  cursor: pointer;
+}
+
+h1 {
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
