@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25rem;
+}
+
+.correct {
+  color: #18CD1B;
+}
+
+.current {
+  text-decoration: underline;
+}
+
+.incorrect {
+  color: #F80606;
+}
+
+span {
+  font-size: 3rem;
+  font-family: 'Roboto Slab', serif;
+}
+
+div {
+  margin: 0rem 1rem 0rem 1rem;
+}
