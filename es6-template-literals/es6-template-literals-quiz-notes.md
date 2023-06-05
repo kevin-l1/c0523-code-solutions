@@ -5,9 +5,10 @@
 After completing this exercise, you should be able to discuss or answer the following questions:
 
 - What is the syntax for writing a template literal?
+Wrap the string literal in ` `. Wrap a variable with ${} to use it in the string.
 
 - What is "string interpolation"?
-
+Substituting parts of the string for the values of variables or expressions.
 
 ## Notes
 
