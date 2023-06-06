@@ -1,0 +1,41 @@
+#container {
+  width: 1600px;
+  margin: 0 auto;
+}
+
+#row {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.column-fifth {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex-basis: 20%;
+}
+
+
+h1, p, span {
+  font-family: 'DM Sans', sans-serif;
+}
+
+p {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+span {
+  color: #E5E5E5;
+  font-weight: lighter;
+}
+
+mark {
+  background-color: #FFF2E7;
+}
+
+img {
+  object-fit: contain;
+  width: 100%;
+}
