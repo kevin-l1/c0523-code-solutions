@@ -1,0 +1,43 @@
+.container {
+  margin: 0 auto;
+  max-width: 50%;
+  border: solid;
+  border-color: black;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.left,
+.right {
+  flex-basis: 15%
+}
+
+.center {
+  flex-basis: 70%
+}
+
+.fa-chevron-left,
+.fa-chevron-right {
+  font-size: 3rem;
+}
+
+.fa-circle {
+  font-size: 2rem;
+  padding: 1rem 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
