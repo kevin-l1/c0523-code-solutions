@@ -37,25 +37,32 @@ function addEmployees() {
   xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
   xhr.responseType = 'json';
   xhr.addEventListener('load', () => {
+
+    const positionArray = [
+      'Customer Service',
+      'Salesman',
+      'Accountant',
+      'Technician',
+    ]
+
     for (let index = 0; index < 4; index++) {
-      business.employees[xhr.response[index].name] = xhr.response[index];
-      business.employees[xhr.response[index].name]['daysOfWeekWorking'] = [];
+      let split = xhr.response[index].name.split(' ');
+      let firstName = split[0].toLowerCase();
+      business.employees[firstName] = {};
+      business.employees[firstName]['position'] = positionArray[index]
+      business.employees[firstName]['daysOfWeekWorking'] = [];
       let day;
       for (let i = 0; i < 5; i++) {
         day = business.daysOpen[Math.floor(Math.random() * 5)];
-        if (business.employees[xhr.response[index].name]['daysOfWeekWorking'].length < 5 || business.employees[xhr.response[index].name]['daysOfWeekWorking'].length < 1) {
-          if(!business.employees[xhr.response[index].name]['daysOfWeekWorking'].includes(day)) {
-            business.employees[xhr.response[index].name]['daysOfWeekWorking'].push(day);
+        if (business.employees[firstName]['daysOfWeekWorking'].length < 5 || business.employees[firstName]['daysOfWeekWorking'].length < 1) {
+          if(!business.employees[firstName]['daysOfWeekWorking'].includes(day)) {
+            business.employees[firstName]['daysOfWeekWorking'].push(day);
           }
         }
       }
-      business.employees[xhr.response[index].name]['daysOfWeekWorking'].push('S');
-      business.employees[xhr.response[index].name]['daysOfWeekWorking'].push('Su');
+      business.employees[firstName]['daysOfWeekWorking'].push('S');
+      business.employees[firstName]['daysOfWeekWorking'].push('Su');
     }
-    business.employees['Clementine Bauch']['title'] = 'Customer Service';
-    business.employees['Ervin Howell']['title'] = 'Salesman';
-    business.employees['Leanne Graham']['title'] = 'Accountant';
-    business.employees['Patricia Lebsack']['title'] = 'Technician';
 
     for (const key in business.employees) {
       if (business.employees[key].daysOfWeekWorking.length > 5) {
@@ -82,3 +89,5 @@ document.addEventListener('DOMContentLoaded', () => {
   addEmployees();
   deleteEmployees('ted');
 })
+
+console.log(business.employees['jack'])
