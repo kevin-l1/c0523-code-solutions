@@ -89,5 +89,3 @@ document.addEventListener('DOMContentLoaded', () => {
   addEmployees();
   deleteEmployees('ted');
 })
-
-console.log(business.employees['jack'])
