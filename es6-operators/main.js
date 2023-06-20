@@ -11,13 +11,8 @@ const v4 = [3, 5, 7, 9];
  * Expected: v1 message logs, v2 message does not.
  */
 console.log(' TODO: 1')
-if (v1) {
-  console.log('v1 is truthy')
-}
-if (v2) {
-  console.log('v2 is truthy')
-}
-
+v1 && console.log('v1 is truthy')
+v2 && console.log('v2 is truthy')
 
 /* TODO:
  * Demonstrate how to assign a "default value" to a variable.
@@ -27,14 +22,8 @@ if (v2) {
  * Expected: `config1 = { value: 'Something' }`, `config2 = 'default-value'`.
  */
 console.log(' TODO: 2')
-let config1 = v1
-let config2 = v1
-if (!v1) {
-  config1 = 'default-value'
-}
-if (!v2) {
-  config2 = 'default-value'
-}
+const config1 = v1 || 'default-value'
+const config2 = v2 || 'default-value'
 console.log(config1)
 console.log(config2)
 
@@ -48,20 +37,11 @@ console.log(config2)
  * Expected: `config1 = { value: 'Something' }`, `config2 = ''`, `config3 = 'default-value'`.
  */
 console.log(' TODO: 3')
-let cfg1 = v1
-let cfg2 = v2
-let cfg3 = v3
-if (v1 === undefined) {
-  cfg1 = 'default-value'
-}
-if (v2 === undefined) {
-  cfg2 = 'default-value'
-}
-if (v2 === undefined) {
-  cfg3 = 'default-value'
-}
+const cfg1 = v1 ?? 'default-value'
+const cfg2 = v2 ?? 'default-value'
+const cfg3 = v3 ?? 'default-value'
 console.log(cfg1)
-console.log(cfg2)
+console.log(`'${cfg2}'`)
 console.log(cfg3)
 
 /* TODO:
@@ -73,8 +53,8 @@ console.log(cfg3)
  * Expected: `tern1 = 'truthy'`, `tern2 = 'falsy'`.
  */
 console.log(' TODO: 4')
-tern1 = v1 ? 'truthy' : 'falsy'
-tern2 = v2 ? 'truthy' : 'falsy'
+const tern1 = v1 ? 'truthy' : 'falsy'
+const tern2 = v2 ? 'truthy' : 'falsy'
 console.log(tern1)
 console.log(tern2)
 
@@ -88,9 +68,9 @@ console.log(tern2)
  * Expected: `oc1 = 'Something'`, `oc2 = undefined`, `oc3 = undefined`.
  */
 console.log(' TODO: 5')
-  let oc1 = v1?.value;
-  let oc2 = v2?.value;
-  let oc3 = v3?.value;
+  const oc1 = v1?.value;
+  const oc2 = v2?.value;
+  const oc3 = v3?.value;
   console.log(oc1)
   console.log(oc2)
   console.log(oc3)
@@ -103,7 +83,7 @@ console.log(' TODO: 5')
  * Expected: `sObj = { value: 'Something', foo: 'bar' }`.
  */
 console.log(' TODO: 6')
-let sObj = {...v1, foo: 'bar'}
+const sObj = {...v1, foo: 'bar'}
 console.log(sObj)
 
 /* TODO:
@@ -114,5 +94,5 @@ console.log(sObj)
  * Expected: `sArr = [100, 3, 5, 7, 9]`.
  */
 console.log(' TODO: 7')
-let sArr = [100, ...v4]
+const sArr = [100, ...v4]
 console.log(sArr)
