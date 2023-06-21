@@ -1,20 +1,14 @@
-$countdown = document.querySelector('.countdown-display')
-
+const $countdown = document.querySelector('.countdown-display')
 let interval;
+let counter = 4;
 
-function settingInterval(callback) {
-  if ($countdown.textContent === '~Earth Beeeelooowww Us~') {
-   clearInterval(interval);
-   return;
-  }
-  if ($countdown.textContent === '4') {
-    $countdown.textContent = '3'
-  } else if ($countdown.textContent === '3') {
-    $countdown.textContent = '2'
-  } else if ($countdown.textContent === '2') {
-    $countdown.textContent = '1'
+function settingInterval() {
+  counter--;
+  if (counter > 0) {
+    $countdown.textContent = counter;
   } else {
     $countdown.textContent = '~Earth Beeeelooowww Us~'
+    clearInterval(interval)
   }
 }
 
