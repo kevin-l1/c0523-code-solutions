@@ -32,11 +32,14 @@ export default function HotButton() {
   }
 
   return (
-    <button
-      style={{ background: color, color: textColor }}
-      className="button"
-      onClick={handleClick}>
-      Hot Button
-    </button>
+    <>
+      <button
+        style={{ background: color, color: textColor }}
+        className="button"
+        onClick={handleClick}>
+        Hot Button
+      </button>
+      <h1>Clicks: {counter}</h1>
+    </>
   );
 }
