@@ -1,4 +1,5 @@
 /* exported invert */
+
 function invert(source) {
   let arr = Object.keys(source);
   let obj = {};

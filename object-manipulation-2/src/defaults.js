@@ -1,4 +1,5 @@
 /* exported defaults */
+
 function defaults(target, source) {
   const sourceArr = Object.keys(source);
   for (let item in source) {
