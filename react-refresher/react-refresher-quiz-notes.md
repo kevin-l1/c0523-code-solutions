@@ -20,6 +20,7 @@ After completing this exercise, you should be able to discuss or answer the foll
   By wrapping the expression in curly braces.
 
 - What are React hooks and what are the three "Rules of Hooks"?
+  Hooks can only be called inside React function components. Hooks can only be called at the top level of a component. Hooks cannot be conditional.
 
 - How do you manage state in a React component?
   Import state with "import { useState } from 'react'" and set the state by using (const [index, setIndex] = useState(0)) with the value inside useState being whatever you want the index's value to be. When you want to update the state variable, call the state setter variable with the value inside the parenthesis containing the state variable and how you want to change it.
