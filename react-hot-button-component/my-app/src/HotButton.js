@@ -11,8 +11,6 @@ export default function HotButton() {
     setCounter(counter + 1);
   }
 
-  console.log(counter);
-
   if (counter >= 0 && counter < 3) {
     color = 'black';
     textColor = 'white';
