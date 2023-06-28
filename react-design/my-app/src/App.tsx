@@ -1,0 +1,24 @@
+import React from 'react';
+import './App.css';
+import RotatingBanner from './RotatingBanner';
+
+const items: string[] = [
+  'Aardvark',
+  'Bengal',
+  'Caterpillar',
+  'Dromedary',
+  'Elephant',
+  'Ferret',
+];
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <RotatingBanner items={items} />
+      </header>
+    </div>
+  );
+}
+
+export default App;

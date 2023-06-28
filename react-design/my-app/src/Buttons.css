@@ -1,0 +1,9 @@
+button {
+  width: 6rem;
+  font-size: 4rem;
+}
+
+.previous,
+.next {
+  width: 10rem;
+}
