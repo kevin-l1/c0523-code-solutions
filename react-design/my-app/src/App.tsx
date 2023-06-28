@@ -4,11 +4,11 @@ import RotatingBanner from './RotatingBanner';
 
 const items = [
   'Aardvark',
-  // 'Bengal',
-  // 'Caterpillar',
-  // 'Dromedary',
-  // 'Elephant',
-  // 'Ferret',
+  'Bengal',
+  'Caterpillar',
+  'Dromedary',
+  'Elephant',
+  'Ferret',
 ];
 
 function App() {

@@ -6,13 +6,11 @@ type Props = {
 };
 
 export default function RotatingBanner({ items }: Props) {
+  const newArray = items.map((name) => <h1>{name}</h1>);
+
   return (
     <div className="container">
-      <div className="names">
-        {items.map((name) => (
-          <h1>{name}</h1>
-        ))}
-      </div>
+      <div className="names">{newArray[0]}</div>
       <Buttons />
     </div>
   );
