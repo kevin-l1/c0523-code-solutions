@@ -5,7 +5,7 @@ import CustomButton from './CustomButton.js'
 function App() {
 
   function handleCustomClick(text) {
-    alert(text)
+    alert$(`Clicked ${text}`)
   }
 
   return (
@@ -14,17 +14,17 @@ function App() {
         <CustomButton
           color="red"
           text="Good Morning"
-          onCustomClick={() => handleCustomClick('Clicked red Good Morning')}
+          onCustomClick={handleCustomClick}
         />
         <CustomButton
           color="orange"
           text="Bonjour"
-          onCustomClick={() => handleCustomClick('Clicked orange Bonjour')}
+          onCustomClick={handleCustomClick}
         />
         <CustomButton
           color="yellow"
           text="Ohayo"
-          onCustomClick={() => handleCustomClick('Clicked yellow Ohayo')}
+          onCustomClick={handleCustomClick}
         />
       </header>
     </div>
