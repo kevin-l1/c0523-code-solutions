@@ -1,11 +1,11 @@
 import './RotatingBanner.css';
 import Buttons from './Buttons';
 
-// type items = [
-//   string
-// ]
+type Props = {
+  items: string[];
+};
 
-export default function RotatingBanner({ items }: string[]) {
+export default function RotatingBanner({ items }: Props) {
   return (
     <div className="container">
       <div className="names">
