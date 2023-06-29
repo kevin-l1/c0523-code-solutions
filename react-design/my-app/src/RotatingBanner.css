@@ -1,9 +1,24 @@
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .names {
   display: flex;
   justify-content: center;
+}
+
+button {
+  width: 6rem;
+  font-size: 4rem;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.previous,
+.next {
+  width: 10rem;
 }
