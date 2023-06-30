@@ -68,8 +68,6 @@ function Indicators({ count, current, onSelect }) {
         {i}
       </button>
     );
-    if (i === current) {
-    }
   }
 
   return <div className="many-buttons">{buttons}</div>;
