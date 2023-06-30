@@ -9,24 +9,24 @@ export default function RegistrationFormControlled() {
     console.log(`Username: ${username}, Password: ${password}`);
   }
 
+  function handleUsername(event) {
+    setUsername(event.target.value);
+  }
+
+  function handlePassword(event) {
+    setPassword(event.target.value);
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
         Username:
-        <input
-          type="text"
-          name="username"
-          onChange={(event) => setUsername(event.target.value)}
-        />
+        <input type="text" name="username" onChange={handleUsername} />
       </label>
 
       <label>
         Password:
-        <input
-          type="password"
-          name="password"
-          onChange={(event) => setPassword(event.target.value)}
-        />
+        <input type="password" name="password" onChange={handlePassword} />
       </label>
 
       <button type="submit">Sign Up</button>
