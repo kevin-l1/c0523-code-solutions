@@ -9,9 +9,14 @@
   justify-content: center;
 }
 
+.current {
+  background: blue;
+}
+
 button {
   width: 6rem;
   font-size: 4rem;
+  background-color: white;
 }
 
 button:hover {

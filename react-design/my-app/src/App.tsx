@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import RotatingBanner from './RotatingBanner';
+import RBanner from './RBanner.js';
 
 const items = [
   'Aardvark',
@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <RotatingBanner items={items} />
+        <RBanner items={items} />
       </header>
     </div>
   );

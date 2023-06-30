@@ -1,15 +1,10 @@
 import './RotatingBanner.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-type Props = {
-  items: string[];
-};
-
-export default function RotatingBanner({ items }: Props) {
+export default function RBanner({ items }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  let newArray: string[];
-  newArray = items.map((name) => name);
+  // let newArray = items.map((name) => name);
 
   function handlePrev() {
     const prevIndex = (currentIndex - 1 + items.length) % items.length;
@@ -21,11 +16,9 @@ export default function RotatingBanner({ items }: Props) {
     setCurrentIndex(nextIndex);
   }
 
-  function handleButtons() {
-    setCurrentIndex(currentIndex);
+  function handleButtons(num) {
+    setCurrentIndex(num);
   }
-
-  const count: number = items.length;
 
   return (
     <div>
@@ -33,7 +26,7 @@ export default function RotatingBanner({ items }: Props) {
       <div>
         <PrevButton clickPrev={handlePrev} />
         <Indicators
-          count={count}
+          count={items.length}
           current={currentIndex}
           onSelect={handleButtons}
         />
@@ -43,11 +36,11 @@ export default function RotatingBanner({ items }: Props) {
   );
 }
 
-function Banner(item: any) {
-  return <div>{item}</div>;
+function Banner({ item }) {
+  return <div style={{ fontSize: 100, marginBottom: 25 }}>{item}</div>;
 }
 
-function PrevButton(clickPrev: any) {
+function PrevButton({ clickPrev }) {
   return (
     <button className="previous" onClick={clickPrev}>
       Prev
@@ -55,7 +48,7 @@ function PrevButton(clickPrev: any) {
   );
 }
 
-function NextButton(clickNext: any) {
+function NextButton({ clickNext }) {
   return (
     <button className="next" onClick={clickNext}>
       Next
@@ -63,22 +56,20 @@ function NextButton(clickNext: any) {
   );
 }
 
-function Indicators(
-  count: any,
-  current: number,
-  onSelect: Function
-): JSX.Element {
+function Indicators({ count, current, onSelect }) {
   const buttons = [];
 
   for (let i = 0; i < count; i++) {
     buttons.push(
       <button
-        style={{ background: i === current ? 'blue' : 'white' }}
+        style={{ background: i === current ? 'lightblue' : 'white' }}
         key={i}
         onClick={() => onSelect(i)}>
         {i}
       </button>
     );
+    if (i === current) {
+    }
   }
 
   return <div className="many-buttons">{buttons}</div>;
