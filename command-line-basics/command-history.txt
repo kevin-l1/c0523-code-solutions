@@ -1,0 +1,139 @@
+    1  cd //
+    2  cd ..
+    3  cd ..
+    4  git add react-validated-input-component
+    5  git commit -m 'Completed react-validated-input-component'
+    6  git push origin react-validated-input-component
+    7  git switch main
+    8  git switch react-accordion-component
+    9  git switch main
+   10  git switch react-accordion-component
+   11  git switch object-manipulation-1
+   12  git switch react-accordion-component
+   13  git switch react-intro
+   14  git switch main
+   15  git switch react-intro
+   16  git switch react-accordion-component
+   17  git switch main
+   18  git branch -d react-accordion-component
+   19  npm audit fix
+   20  git switch react-validated-input-component
+   21  git branch react-validated-input-component
+   22  git switch react-validated-input-component
+   23  git switch main
+   24  git switch react-validated-input-component
+   25  cd react-validated-input-component
+   26  npx create-react-app --template typescript
+   27  npx create-react-app my-app --template typescript
+   28  npm start
+   29  cd my-app
+   30  npm start
+   31  git branch react-accordion-component
+   32  git switch react-accordion-component
+   33  cd react-accordion-component
+   34  npx create-react-app my-app --template typescript
+   35  cd ..
+   36  git add react-accordion-component
+   37  git commit -m 'react-accordion-component'
+   38  git commit -m 'react-accordion-component' --no verify
+   39  git commit -m 'react-accordion-component' --no-verify
+   40  git switch main
+   41  git branch command-line-basics
+   42  git switch command-line-basics
+   43  cd command-line-basics
+   44  man man
+   45  man cat
+   46  man man
+   47  man cat
+   48  cat laziness.txt
+   49  cat impatience.txt
+   50  cat hubris.txt
+   51  cat laziness.txt - impatience.txt - hubris.txt
+   52  cd command-line-basics
+   53  man cat
+   54  cat laziness.txt impatience.txt hubris.txt
+   55  cat laziness.txt impatience.txt hubris.txt > three-virtues.txt
+   56  cat three-virtues.txt
+   57  man ls
+   58  man cat
+   59  man ls
+   60  ls command-line-basics
+   61  ls
+   62  ls lfz-staff
+   63  ls lfz-staff/
+   64  ls lfz-staff -a
+   65  ls lfz-staff -F
+   66  ls -aF lfz-staff
+   67  ls -aF lfz-staff > lfz-staff/contents.txt
+   68  cat lfz-staff/contents.txt
+   69  man pwd
+   70  pwd
+   71  pwd > i-was-here.txt
+   72  ls
+   73  cat i-was-here.txt
+   74  man echo
+   75  echo hello,world
+   76  echo 'hello, world'
+   77  echo Hello, World! > hello.txt
+   78  cat hello.txt
+   79  echo 'Hello, World! >hi.txt
+   80  cd command-line-basics
+   81  echo 'Hello, World!' > hi.txt
+   82  cat hi.txt
+   83  ls
+   84  cat hello.txt
+   85  man touch
+   86  touch tag-youre-it.txt
+   87  touch boop.txt > snoot/
+   88  touch boop.txt > snoot
+   89  touch snoot/boop.txt
+   90  ls snoot
+   91  man mkdir
+   92  mkdir parent
+   93  ls parent
+   94  ls
+   95  mkdir -p parent/child/grandchild
+   96  ls parent
+   97  touch parent/child/grandchild/.gitkeep
+   98  ls grandchild
+   99  touch parent/child/grandchild/gitkeep
+  100  touch .gitkeep > parent/child/grandchild
+  101  touch .gitkeep parent/child/grandchild
+  102  touch parent/child/grandchild/.gitkeep
+  103  touch .gitkeep parent/child/grandchild
+  104   touch .gitkeep > parent/child/grandchild
+  105  touch parent/child/grandchild/.gitkeep
+  106  ls -a parent/child/grandchild
+  107  ls parent/child/grandchild
+  108  man mv
+  109  mv pokiemans pokemon
+  110  ls 
+  111  man rm
+  112  man rm
+  113  rm lol.txt
+  114  ls
+  115  ls
+  116  rm kill-me
+  117  rm -r kill-me
+  118  man rm
+  119  ls
+  120  man cp
+  121  man cp
+  122  cp and-then no-and-then.txt
+  123  cd no-and-then.txt and-then
+  124  cd no-and-then.txt and-then.txt
+  125  cd no-and-then.txt > and-then.txt
+  126  cp no-and-then.txt and-then.txt
+  127  cp and-then.txt no-and-then.txt
+  128  ls
+  129  cat and-then
+  130  cat and-then.txt
+  131  rm no-and-then.txt
+  132  cp and-then.txt no-and-then.txt
+  133  ls
+  134  cat and-then.txt
+  135  cat no-and-then.txt
+  136  man histry
+  137  man history
+  138  history
+  139  history > command-history.txt
