@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import AppDrawer from './AppDrawer.js';
 
 const items = [
   'Honkai Impact 3rd',
@@ -12,7 +13,7 @@ const items = [
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <AppDrawer items={items} />
     </div>
   );
 }

@@ -4,8 +4,11 @@ import { useState } from 'react';
 export default function AppDrawer({ items }) {
   return (
     <>
-      <Menu />
-      <MenuItems items={items} />
+      <i class="fa-solid fa-bars"></i>
+      <div className="container">
+        <Menu />
+        <MenuItems items={items} />
+      </div>
     </>
   );
 }
