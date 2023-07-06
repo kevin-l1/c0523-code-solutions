@@ -24,8 +24,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-          <Accordion topics={topics}/>
+        <Accordion topics={topics} />
       </header>
     </div>
   );

@@ -1,0 +1,27 @@
+.hidden {
+  display: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.topic {
+  margin-bottom: 1rem;
+}
+
+.accordion-header {
+  width: 50rem;
+  border: solid;
+  background: lightgray;
+}
+
+.accordion-body {
+  width: 50rem;
+  border: solid;
+  border-top: none;
+}
+
+p {
+  margin: 0;
+}
