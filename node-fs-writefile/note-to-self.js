@@ -1,7 +1,9 @@
 import { writeFile } from 'node:fs/promises';
 
+const [, , note] = process.argv;
+
 try {
-  await writeFile('random.txt', Math.random() + '\n', 'utf8');
+  await writeFile('note.txt', note + '\n', 'utf8');
 } catch (error) {
   console.error(error);
   process.exit(1);
