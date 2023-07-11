@@ -1,16 +1,22 @@
 import express from 'express';
 
-// const nextId = 1;
-const grades = {};
+let nextId = 1;
+const gradesArray = [];
 
 const app = express();
 
 app.get('/api/grades', (req, res) => {
-  res.json(grades);
+  res.json(gradesArray);
 });
 
-app.use('/api/grades', (req, res) => {
-  express.json();
+app.use(express.json());
+
+app.post('/api/grades', (req, res) => {
+  const grades = req.body;
+  grades.id = nextId;
+  nextId++;
+  gradesArray.push(grades);
+  res.sendStatus(201);
 });
 
 app.listen(8080, () => {

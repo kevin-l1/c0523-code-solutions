@@ -5,6 +5,7 @@
 After completing this exercise, you should be able to discuss or answer the following questions:
 
 - What does the `express.json()` middleware do and when would you need it?
+  Returns middleware that only parses JSON and only looks at requests where the Content-Type header matches the type option.
 
 ## Notes
 
