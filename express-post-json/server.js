@@ -2,7 +2,6 @@ import express from 'express';
 
 let nextId = 1;
 const gradesArray = [];
-let grades = [];
 
 const app = express();
 
@@ -13,11 +12,15 @@ app.get('/api/grades', (req, res) => {
 app.use(express.json());
 
 app.post('/api/grades', (req, res) => {
-  grades = req.body;
+  const grades = req.body;
+  if (!grades.name || !grades.course || !grades.score) {
+    res.status(400).send('Incomplete request');
+    return;
+  }
   grades.id = nextId;
   nextId++;
   gradesArray.push(grades);
-  res.sendStatus(201);
+  res.sendStatus(201).send(grades);
 });
 
 app.listen(8080, () => {
