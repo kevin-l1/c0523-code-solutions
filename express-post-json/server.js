@@ -2,6 +2,7 @@ import express from 'express';
 
 let nextId = 1;
 const gradesArray = [];
+let grades = [];
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.get('/api/grades', (req, res) => {
 app.use(express.json());
 
 app.post('/api/grades', (req, res) => {
-  const grades = req.body;
+  grades = req.body;
   grades.id = nextId;
   nextId++;
   gradesArray.push(grades);
