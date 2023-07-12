@@ -14,6 +14,7 @@ After completing this exercise, you should be able to discuss or answer the foll
   JavaScript file, HTML file, CSS file
 
 - What is a good way to serve application images using Express?
+  Use Express Static to serve these images on demand. This can be done by
 
 ## Notes
 
