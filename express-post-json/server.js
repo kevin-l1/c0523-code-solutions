@@ -1,26 +1,30 @@
 import express from 'express';
 
 let nextId = 1;
-const gradesArray = [];
+const grades = {};
 
 const app = express();
 
 app.get('/api/grades', (req, res) => {
+  const gradesArray = [];
+  for (const key in grades) {
+    gradesArray.push(grades[key]);
+  }
   res.json(gradesArray);
 });
 
 app.use(express.json());
 
 app.post('/api/grades', (req, res) => {
-  const grades = req.body;
-  if (!grades.name || !grades.course || !grades.score) {
+  const grade = req.body;
+  if (!grade.name || !grade.course || !grade.score) {
     res.status(400).send('Incomplete request');
     return;
   }
-  grades.id = nextId;
-  nextId++;
-  gradesArray.push(grades);
-  res.sendStatus(201).send(grades);
+  const id = nextId++;
+  grade.id = id;
+  grades[id] = grade;
+  res.sendStatus(201).send(grade);
 });
 
 app.listen(8080, () => {
