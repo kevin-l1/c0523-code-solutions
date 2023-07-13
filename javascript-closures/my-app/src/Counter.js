@@ -6,7 +6,7 @@ export default function Counter() {
   useEffect(() => {
     getData();
     setCounter((prev) => prev + 1);
-  }, [getData]);
+  }, []);
 
   const getData = useCallback(() => {
     // fetch data
