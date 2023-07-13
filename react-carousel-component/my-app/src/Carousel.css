@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  margin: 0 auto;
+  height: 500px;
+  width: 1000px;
+}
+
+.picture-circles-container {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  object-fit: scale-down;
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.circles-container {
+  display: flex;
+  justify-content: center;
+}
+
+.fa-chevron-right,
+.fa-chevron-left {
+  font-size: 5rem;
+}
+
+.fa-circle {
+  font-size: 5rem;
+}
