@@ -1,13 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import Carousel from './Carousel.js';
 
 const images = [
   { src: './images/bulbasaur.png', alt: 'Bulbasaur' },
   { src: './images/charmander.png', alt: 'Charmander' },
-  { src: './images/cubone.png', alt: 'Cubone' },
-  { src: './images/kirby.png', alt: 'Kirby' },
-  { src: './images/braixen.png', alt: 'Braixen' },
+  { src: './images/squirtle.png', alt: 'Squirtle' },
+  { src: './images/happiny.png', alt: 'Happiny' },
+  { src: './images/tinkaton.png', alt: 'Tinkaton' },
 ];
 
 function App() {
