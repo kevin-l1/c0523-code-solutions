@@ -1,28 +1,29 @@
 import './Carousel.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useCallback } from 'react';
 
 export default function Carousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    let carousel = setInterval(handleRight, 1500);
-    return () => clearInterval(carousel);
-  });
 
   function handleLeft() {
     const prevIndex = (currentIndex - 1 + images.length) % images.length;
     setCurrentIndex(prevIndex);
   }
 
-  function handleRight() {
+  const handleRight = useCallback(() => {
     const nextIndex = (currentIndex + 1) % images.length;
     setCurrentIndex(nextIndex);
-  }
+  }, [currentIndex, images.length]);
 
   function handleCircle(num) {
     setCurrentIndex(num);
   }
+
+  useEffect(() => {
+    let carousel = setInterval(handleRight, 1500);
+    return () => clearInterval(carousel);
+  }, [handleRight]);
 
   return (
     <div className="container">
