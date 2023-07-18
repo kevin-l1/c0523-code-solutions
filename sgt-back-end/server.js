@@ -62,6 +62,7 @@ app.post('/api/grades', async (req, res, next) => {
     const { name, course, score } = req.body;
     if (!name || !course || !score) {
       res.status(400).json({ error: 'The grade is invalid.' });
+      return;
     }
     const sql = `
       insert into "grades" ("name", "course", "score")
@@ -84,9 +85,11 @@ app.put('/api/grades/:gradeId', async (req, res, next) => {
     const { name, course, score } = req.body;
     if (!name || !course || !score) {
       res.status(400).json({ error: 'The grade is invalid.' });
+      return;
     }
     if (gradeId < 1) {
       res.status(400).json({ error: 'gradeId must be a positive integer' });
+      return;
     }
     const sql = `
       update "grades"
@@ -117,9 +120,11 @@ app.delete('/api/grades/:gradeId', async (req, res, next) => {
     const gradeId = Number(req.params.gradeId);
     if (gradeId < 1) {
       res.status(400).json({ error: 'gradeId must be a positive integer' });
+      return;
     }
     if (!gradeId) {
       res.status(404).json({ error: 'The gradeId does not exist' });
+      return;
     }
     const sql = `
       delete from "grades"
