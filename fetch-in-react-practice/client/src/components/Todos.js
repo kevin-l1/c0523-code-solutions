@@ -10,13 +10,48 @@ export default function Todos() {
   const [error, setError] = useState();
 
   /* Implement useEffect to fetch all todos. Hints are at the bottom of the file. */
-  useEffect(() => {}, []);
+  useEffect(() => {
+    try {
+      async function fetchTodos() {
+        const response = await fetch('/api/todos');
+        const result = await response.json();
+        setTodos(result);
+      }
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
   /* Implement addTodo to add a new todo. Hints are at the bottom of the file. */
-  async function addTodo(newTodo) {}
+  async function addTodo(newTodo) {
+    try {
+      const response = await fetch('/api/todos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTodo),
+      });
+      const result = await response.json();
+      const array = todos.concat(newTodo);
+      setTodos(array);
+      console.log(newTodo);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   /* Implement toggleCompleted to toggle the completed state of a todo. Hints are at the bottom of the file. */
-  async function toggleCompleted(todoId) {}
+  async function toggleCompleted(todoId) {
+    try {
+      const todosCopy = todos.map((e) => e);
+      const response = await fetch(`/api/todos/${todoId}`);
+    } catch (error) {}
+  }
 
   if (isLoading) {
     return <div>Loading...</div>;
