@@ -1,176 +1,144 @@
 import express from 'express';
-import { readFile, writeFile } from 'node:fs/promises';
-// import pg from 'pg';
+import pg from 'pg';
 
-// const db = new pg.Pool({
-//   connectionString: 'postgres://dev:dev@localhost/studentGradeTable',
-//   ssl: {
-//     rejectUnauthorized: false,
-//   },
-// });
+const db = new pg.Pool({
+  connectionString: 'postgres://dev:dev@localhost/studentGradeTable',
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
 const app = express();
 
 app.use(express.json());
 
-app.get('/api/notes', async (req, res) => {
-  const notesArray = [];
+app.get('/api/grades/:gradeId', async (req, res) => {
   try {
-    const contents = await readFile('./data.json', 'utf8');
-    const data = JSON.parse(contents);
-    const { notes } = data;
-    for (const key in notes) {
-      notesArray.push(notes[key]);
+    const gradeId = Number(req.params.gradeId);
+    if (!Number.isInteger(gradeId) || gradeId <= 0) {
+      res.status(400).json({ error: '"gradeId" must be a positive integer' });
+      return;
     }
-    if (notes) {
-      res.json(notesArray);
+
+    const sql = `
+      select *
+        from "grades"
+      where "gradeId" = $1
+    `;
+
+    const params = [gradeId];
+    const result = await db.query(sql, params);
+    const grade = result.rows[0];
+    if (grade) {
+      res.json(grade);
+    } else {
+      res
+        .status(404)
+        .json({ error: `Cannot find grade with gradeId ${gradeId}` });
     }
-  } catch (error) {
-    res.json([]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'An unexpected error occurred.' });
   }
 });
 
-app.get('/api/notes/:id', async (req, res) => {
-  const errorResponse = {};
+app.get('/api/grades', async (req, res, next) => {
   try {
-    const contents = await readFile('./data.json', 'utf8');
-    const data = JSON.parse(contents);
-    const { notes } = data;
-
-    if (parseInt(req.params.id) < 0) {
-      errorResponse.error = 'id must be a positive integer';
-      throw new Error();
-    }
-    if (notes[parseInt(req.params.id)] === undefined) {
-      errorResponse.error = `cannot find note with id ${req.params.id}`;
-      throw new Error();
-    }
-
-    res.status(200).json(notes[parseInt(req.params.id)]);
-    return;
+    const sql = `
+      select *
+        from "grades"
+    `;
+    const result = await db.query(sql);
+    const grade = result.rows;
+    res.status(200).json(grade);
   } catch (error) {
-    switch (errorResponse.error) {
-      case 'id must be a positive integer':
-        res.status(400).send(errorResponse);
-        break;
-      case `cannot find note with id ${req.params.id}`:
-        res.status(404).send(errorResponse);
-        break;
-      default:
-        errorResponse.error = 'an unexpected error has occured';
-        res.status(500).send(errorResponse);
-        break;
-    }
+    console.error(error);
+    res.status(500).json({ error: 'An unexpected error occured.' });
   }
 });
 
-app.post('/api/notes', async (req, res) => {
-  const errorResponse = {};
+app.post('/api/grades', async (req, res, next) => {
   try {
-    const contents = await readFile('./data.json', 'utf8');
-    const data = JSON.parse(contents);
-
-    if (req.body.content === undefined) {
-      errorResponse.error = 'content is a required field';
-      throw new Error();
+    const { name, course, score } = req.body;
+    if (!name || !course || !score) {
+      res.status(400).json({ error: 'The grade is invalid.' });
     }
-
-    const notes = { id: data.nextId, content: req.body.content };
-    const id = data.nextId;
-
-    data.notes[id] = notes;
-    data.nextId++;
-    await writeFile('./data.json', JSON.stringify(data, null, 2), 'utf8');
-    res.status(201).json(data.notes[id]);
+    const sql = `
+      insert into "grades" ("name", "course", "score")
+        values ($1, $2, $3)
+        returning *
+    `;
+    const params = [name, course, score];
+    const result = await db.query(sql, params);
+    const [grade] = result.rows;
+    res.status(201).json(grade);
   } catch (error) {
-    switch (errorResponse.error) {
-      case 'content is a required field':
-        res.status(400).send(errorResponse);
-        break;
-      default:
-        errorResponse.error = 'an unexpected error has occured';
-        res.status(500).send(errorResponse);
-        break;
-    }
+    console.error(error);
+    res.status(500).json({ error: 'An unexpected error occured.' });
   }
 });
 
-app.delete('/api/notes/:id', async (req, res) => {
-  const errorResponse = {};
+app.put('/api/grades/:gradeId', async (req, res, next) => {
   try {
-    const contents = await readFile('./data.json', 'utf8');
-    const data = JSON.parse(contents);
-
-    if (parseInt(req.params.id) < 0) {
-      errorResponse.error = 'id must be a positive integer';
-      throw new Error();
+    const gradeId = Number(req.params.gradeId);
+    const { name, course, score } = req.body;
+    if (!name || !course || !score) {
+      res.status(400).json({ error: 'The grade is invalid.' });
     }
-
-    if (!data.notes[req.params.id]) {
-      errorResponse.error = `cannot find note with id ${req.params.id}`;
-      throw new Error();
+    if (gradeId < 1) {
+      res.status(400).json({ error: 'gradeId must be a positive integer' });
     }
-
-    delete data.notes[req.params.id];
-    await writeFile('./data.json', JSON.stringify(data, null, 2), 'utf8');
-    res.status(204).send();
+    const sql = `
+      update "grades"
+        set "name" = $1,
+            "course" = $2,
+            "score" = $3
+        where "gradeId" = $4
+        returning *
+    `;
+    const params = [name, course, score, gradeId];
+    const result = await db.query(sql, params);
+    const [grade] = result.rows;
+    if (grade) {
+      res.status(201).json(grade);
+    } else {
+      res
+        .status(404)
+        .json({ error: `Cannot find grade with gradeId ${gradeId}` });
+    }
   } catch (error) {
-    switch (errorResponse.error) {
-      case 'id must be a positive integer':
-        res.status(400).send(errorResponse);
-        break;
-      case `cannot find note with id ${req.params.id}`:
-        res.status(404).send(errorResponse);
-        break;
-      default:
-        errorResponse.error = 'an unexpected error has occured';
-        res.status(500).send(errorResponse);
-        break;
-    }
+    console.error(error);
+    res.status(500).json({ error: 'An unexpected error occured.' });
   }
 });
 
-app.put('/api/notes/:id', async (req, res) => {
-  const errorResponse = {};
-  const content = req.body.content;
+app.delete('/api/grades/:gradeId', async (req, res, next) => {
   try {
-    const contents = await readFile('./data.json', 'utf8');
-    const data = JSON.parse(contents);
-
-    if (parseInt(req.params.id) < 0) {
-      errorResponse.error = 'id must be a positive integer';
-      throw new Error();
+    const gradeId = Number(req.params.gradeId);
+    if (gradeId < 1) {
+      res.status(400).json({ error: 'gradeId must be a positive integer' });
     }
-
-    if (!req.body.content) {
-      errorResponse.error = 'content is a required field';
-      throw new Error();
+    if (!gradeId) {
+      res.status(404).json({ error: 'The gradeId does not exist' });
     }
-
-    if (!data.notes[req.params.id]) {
-      errorResponse.error = `cannot find note with id ${req.params.id}`;
-      throw new Error();
+    const sql = `
+      delete from "grades"
+        where "gradeId" = $1
+        returning *
+    `;
+    const params = [gradeId];
+    const result = await db.query(sql, params);
+    const [grade] = result.rows;
+    if (grade) {
+      res.status(204).json(grade);
+    } else {
+      res
+        .status(404)
+        .json({ error: `Cannot find grade with gradeId ${gradeId}` });
     }
-
-    data.notes[req.params.id].content = content;
-    await writeFile('./data.json', JSON.stringify(data, null, 2), 'utf8');
-    res.status(204).send();
   } catch (error) {
-    switch (errorResponse.error) {
-      case 'id must be a positive integer':
-        res.status(400).send(errorResponse);
-        break;
-      case 'content is a required field':
-        res.status(400).send(errorResponse);
-        break;
-      case `cannot find note with id ${req.params.id}`:
-        res.status(404).send(errorResponse);
-        break;
-      default:
-        errorResponse.error = 'an unexpected error has occured';
-        res.status(500).send(errorResponse);
-        break;
-    }
+    console.error(error);
+    res.status(500).json({ error: 'An unexpected error occured.' });
   }
 });
 
