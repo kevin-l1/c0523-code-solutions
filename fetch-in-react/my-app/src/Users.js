@@ -22,7 +22,7 @@ export default function Users() {
       } catch (error) {
         setError(error);
       } finally {
-        setIsLoading(!isLoading);
+        setIsLoading(false);
       }
     }
     fetchResponse();
