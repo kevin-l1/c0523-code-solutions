@@ -11,17 +11,18 @@ export default function Todos() {
 
   /* Implement useEffect to fetch all todos. Hints are at the bottom of the file. */
   useEffect(() => {
-    try {
-      async function fetchTodos() {
+    async function fetchTodos() {
+      try {
         const response = await fetch('/api/todos');
         const result = await response.json();
         setTodos(result);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
     }
+    fetchTodos();
   }, []);
 
   /* Implement addTodo to add a new todo. Hints are at the bottom of the file. */
@@ -47,10 +48,24 @@ export default function Todos() {
 
   /* Implement toggleCompleted to toggle the completed state of a todo. Hints are at the bottom of the file. */
   async function toggleCompleted(todoId) {
+    const pastTodo = todos.find((todo) => todo.todoId === todoId);
     try {
-      const todosCopy = todos.map((e) => e);
-      const response = await fetch(`/api/todos/${todoId}`);
-    } catch (error) {}
+      const response = await fetch(`/api/todos/${todoId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isCompleted: !pastTodo.isCompleted }),
+      });
+      if (!response.ok) {
+        throw new Error(`fetch Error ${response.status}`);
+      }
+      const result = await response.json();
+      const allTodos = todos.map((original) =>
+        original.todoId === result.todoId ? result : original
+      );
+      setTodos(allTodos);
+    } catch (error) {
+      setError(error);
+    }
   }
 
   if (isLoading) {
