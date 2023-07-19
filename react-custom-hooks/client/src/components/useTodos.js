@@ -12,24 +12,22 @@ import { useEffect, useState } from 'react';
  *   toggleCompleted: a function (todoId) that will toggle the completion of an existing To Do.
  */
 export function useTodos() {
-  const [isLoading, setIsLoading] = useState(true);
   const [todos, setTodos] = useState();
   const [error, setError] = useState();
   useEffect(() => {
     /* TODO: If `todos` hasn't been defined yet, read the items from the API
      * and set them into the `todos` state.
      */
-    async function fetchTodos() {
+    async function loadTodos() {
       try {
-        const response = await fetch('api/todos');
-        if (!response.ok) {
-          throw new Error(`fetch Error ${response.status}`);
-        }
-        const todos = await response.json();
+        const todos = await readTodos();
         setTodos(todos);
       } catch (error) {
         setError(error);
       }
+    }
+    if (!todos) {
+      loadTodos();
     }
   }, [todos]);
 
@@ -39,20 +37,10 @@ export function useTodos() {
      * Note that it is critical that you pass a _new_ array. Do not modify the `todos` array.
      */
     try {
-      const response = await fetch('/api/todos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newTodo),
-      });
-      if (!response.ok) {
-        throw new Error(`fetch Error ${response.status}`);
-      }
-      const todo = await response.json();
+      const todo = await createTodo(newTodo);
       setTodos([...todos, todo]);
     } catch (error) {
       setError(error);
-    } finally {
-      setIsLoading(false);
     }
   }
 
@@ -63,17 +51,14 @@ export function useTodos() {
      * When updating this state, use the updated `todo` returned from the API.
      * Note that it is critical that you pass a _new_ array. Do not modify the `todos` array.
      */
-    const pastTodo = todos.find((todo) => todo.todoId === todoId);
+
     try {
-      const response = await fetch('/api/todos', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ isCompleted: !pastTodo.isCompleted }),
-      });
-      if (!response.ok) {
-        throw new Error(`fetch Error ${response.status}`);
+      const todo = todos.find((todo) => todo.todoId === todoId);
+      if (!todo) {
+        throw new Error('Id does not exist');
       }
-      const result = await response.json();
+      todo.isCompleted = !todo.isCompleted;
+      const result = await updateTodo(todo);
       const allTodos = todos.map((original) =>
         original.todoId === result.todoId ? result : original
       );
