@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { fetchCatalog, toDollars } from '../lib';
 import './Catalog.css';
+import { Link } from 'react-router-dom';
 
 export default function Catalog() {
   const [products, setProducts] = useState();
@@ -43,8 +44,8 @@ export default function Catalog() {
 function Product({ product }) {
   const { productId, name, price, imageUrl, shortDescription } = product;
   return (
-    <link
-      to="/details/:productId"
+    <Link
+      to={`/details/${productId}`}
       className="product text-dark card mb-4 shadow-sm text-decoration-none">
       {/* TODO: Instead of a div, the above should link to `/details/:productId` */}
       <img src={imageUrl} className="image card-img-top" alt={name} />
@@ -53,6 +54,6 @@ function Product({ product }) {
         <p className="card-text text-secondary">{toDollars(price)}</p>
         <p className="description card-text">{shortDescription}</p>
       </div>
-    </link>
+    </Link>
   );
 }
