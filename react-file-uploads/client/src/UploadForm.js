@@ -54,6 +54,7 @@ export default function UploadForm() {
               </button>
             </div>
           </form>
+          {path && <img src={path.url} alt={path.url} />}
         </div>
       </div>
     </div>
