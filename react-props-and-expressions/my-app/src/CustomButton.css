@@ -1,0 +1,16 @@
+.buttonOne {
+  background-color: red;
+  font-size: 5rem;
+}
+
+.buttonTwo {
+  background-color: green;
+  font-size: 5rem;
+}
+
+.buttonThree {
+  background-color: #ADD8E6;
+  border: solid 0.5rem #015FCC;
+  border-radius: 1rem;
+  font-size: 5rem;
+}

@@ -1,0 +1,10 @@
+.button {
+  margin: 0 1rem;
+  font-size: 2rem;
+  border: solid 2px;
+  border-radius: 3px;
+}
+
+.button:hover {
+  border: solid 5px blue;
+}
