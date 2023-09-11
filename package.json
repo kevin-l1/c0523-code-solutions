@@ -18,7 +18,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
-    "markuplint": "^0.1.0",
     "prettier": "^2.8.7",
     "react": "^18.2.0",
     "stylelint": "^15.9.0",
